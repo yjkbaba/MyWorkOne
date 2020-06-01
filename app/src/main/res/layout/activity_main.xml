@@ -13,12 +13,14 @@
         android:layout_width="fill_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
+
         tools:ignore="MissingConstraints" />
 
     <com.example.myworkone4.weiget.FragmentTabHost
         android:id="@android:id/tabhost"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:background="@color/white"
         tools:ignore="MissingConstraints"
         >
 
