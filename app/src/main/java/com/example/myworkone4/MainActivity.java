@@ -13,7 +13,6 @@ import com.example.myworkone4.bean.Tab;
 import com.example.myworkone4.fragment.CartFragment;
 import com.example.myworkone4.fragment.CategoryFragment;
 import com.example.myworkone4.fragment.HomeFragment;
-import com.example.myworkone4.fragment.HotFragment;
 import com.example.myworkone4.fragment.MineFragment;
 import com.example.myworkone4.weiget.FragmentTabHost;
 
@@ -39,12 +38,12 @@ public class MainActivity extends AppCompatActivity {
         Tab tab_run = new Tab(R.string.run,R.drawable.selector_icon_run, RunFragment.class);
         Tab tab_set = new Tab(R.string.set,R.drawable.selector_icon_set, SetFragment.class);*/
         Tab tab_home = new Tab(HomeFragment.class,R.string.home,R.drawable.selector_icon_home);
-        Tab tab_hot = new Tab(HotFragment.class,R.string.hot,R.drawable.selector_icon_hot);
+
         Tab tab_category = new Tab(CategoryFragment.class,R.string.catagory,R.drawable.selector_icon_category);
         Tab tab_cart = new Tab(CartFragment.class,R.string.cart,R.drawable.selector_icon_cart);
         Tab tab_mine = new Tab(MineFragment.class,R.string.mine,R.drawable.selector_icon_mine);
         mTabs.add(tab_home);
-        mTabs.add(tab_hot);
+
         mTabs.add(tab_category);
         mTabs.add(tab_cart);
         mTabs.add(tab_mine);
