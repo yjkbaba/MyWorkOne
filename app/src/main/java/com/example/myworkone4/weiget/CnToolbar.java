@@ -1,5 +1,6 @@
 package com.example.myworkone4.weiget;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
@@ -33,6 +34,7 @@ public class CnToolbar extends Toolbar {
         this(context,attrs,0);
     }
 
+    @SuppressLint("RestrictedApi")
     public CnToolbar(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
 
@@ -41,10 +43,10 @@ public class CnToolbar extends Toolbar {
         setContentInsetsRelative(10,10);
 
         if(attrs!=null){
-        final TintTypedArray a = TintTypedArray.obtainStyledAttributes(getContext(), attrs,
+        @SuppressLint("RestrictedApi") final TintTypedArray a = TintTypedArray.obtainStyledAttributes(getContext(), attrs,
                 R.styleable.CnToolbar, defStyleAttr, 0);
 
-            final Drawable rightIcon= a.getDrawable(R.styleable.CnToolbar_rightButtonIcon);
+            @SuppressLint("RestrictedApi") final Drawable rightIcon= a.getDrawable(R.styleable.CnToolbar_rightButtonIcon);
             if (rightIcon != null) {
                 //setNavigationIcon(navIcon);
                 setRightButtonIcon(rightIcon);
@@ -62,7 +64,7 @@ public class CnToolbar extends Toolbar {
     private void initView() {
 
         if(mView==null){
-
+            mInflater = LayoutInflater.from(getContext());
             mView=mInflater.inflate(R.layout.toolbar,null);
 
             mTextTitle=(TextView) mView.findViewById(R.id.toorbar_title);
