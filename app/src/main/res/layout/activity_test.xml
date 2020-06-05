@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
         android:minHeight="?attr/actionBarSize"
-        app:rightButtonIcon="@drawable/icon_back_32px"
+        app:rightButtonIcon="@drawable/icon_search"
         android:navigationIcon="@drawable/icon_back_32px"
         app:title="首页"
         >
