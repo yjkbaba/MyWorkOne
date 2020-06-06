@@ -40,7 +40,7 @@ public class CnToolbar extends Toolbar {
 
         initView();
 
-        setContentInsetsRelative(10,10);
+        setContentInsetsRelative(30,30);
 
         if(attrs!=null){
         @SuppressLint("RestrictedApi") final TintTypedArray a = TintTypedArray.obtainStyledAttributes(getContext(), attrs,
