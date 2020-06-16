@@ -10,6 +10,8 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.daimajia.slider.library.Animations.DescriptionAnimation;
 import com.daimajia.slider.library.Indicators.PagerIndicator;
@@ -18,7 +20,11 @@ import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.daimajia.slider.library.Tricks.ViewPagerEx;
 import com.example.myworkone4.R;
+import com.example.myworkone4.bean.HomeCategory;
 
+import java.util.ArrayList;
+import java.util.List;
+import com.example.myworkone4.adapter.HomeCatgoryAdapter;
 import static android.content.ContentValues.TAG;
 
 
@@ -29,6 +35,8 @@ public class HomeFragment extends Fragment {
 
     private SliderLayout mSliderLayout;
     private PagerIndicator indicator;
+    private RecyclerView mRecyclerView;
+    private HomeCatgoryAdapter mAdatper;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -38,8 +46,40 @@ public class HomeFragment extends Fragment {
         indicator=view.findViewById(R.id.custom_indicator);
 
         initSlider();
+
+        initRecyclerView(view);
+
         return view;
     }
+
+    private void initRecyclerView(View view) {
+
+        mRecyclerView = (RecyclerView) view.findViewById(R.id.recyclerview);
+
+        List<HomeCategory> datas = new ArrayList<>(15);
+
+        HomeCategory category = new HomeCategory("热门活动",R.drawable.img_big_1,R.drawable.img_1_small1,R.drawable.img_1_small2);
+        datas.add(category);
+
+        category = new HomeCategory("有利可图",R.drawable.img_big_4,R.drawable.img_4_small1,R.drawable.img_4_small2);
+        datas.add(category);
+        category = new HomeCategory("品牌街",R.drawable.img_big_2,R.drawable.img_2_small1,R.drawable.img_2_small2);
+        datas.add(category);
+
+        category = new HomeCategory("金融街 包赚翻",R.drawable.img_big_1,R.drawable.img_3_small1,R.drawable.imag_3_small2);
+        datas.add(category);
+
+        category = new HomeCategory("超值购",R.drawable.img_big_0,R.drawable.img_0_small1,R.drawable.img_0_small2);
+        datas.add(category);
+
+        mAdatper = new HomeCatgoryAdapter(datas);
+
+        mRecyclerView.setAdapter(mAdatper);
+
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this.getActivity()));
+
+    }
+
     private void initSlider(){
         TextSliderView textSliderView=new TextSliderView(this.getActivity());
         textSliderView.image("https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=43784219,2537123848&fm=26&gp=0.jpg");

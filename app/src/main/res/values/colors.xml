@@ -4,4 +4,6 @@
     <color name="colorPrimaryDark">#C8FF5722</color>
     <color name="colorAccent">#03DAC5</color>
     <color name="white">#31009688</color>//底部菜单栏背景框
+    <color name="black">#000</color>
+    <color name="bg_color">#f1f1f1</color>
 </resources>
