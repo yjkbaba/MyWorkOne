@@ -20,6 +20,7 @@ import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.daimajia.slider.library.Tricks.ViewPagerEx;
 import com.example.myworkone4.R;
+import com.example.myworkone4.adapter.DividerItemDecortion;
 import com.example.myworkone4.bean.HomeCategory;
 
 import java.util.ArrayList;
@@ -75,7 +76,7 @@ public class HomeFragment extends Fragment {
         mAdatper = new HomeCatgoryAdapter(datas);
 
         mRecyclerView.setAdapter(mAdatper);
-
+        mRecyclerView.addItemDecoration(new DividerItemDecortion());
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this.getActivity()));
 
     }
