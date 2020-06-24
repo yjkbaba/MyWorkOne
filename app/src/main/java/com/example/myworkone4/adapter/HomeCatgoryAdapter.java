@@ -3,6 +3,8 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.myworkone4.bean.Campaign;
 import com.example.myworkone4.bean.HomeCampaign;
 import android.view.View;
 import android.widget.ImageView;
@@ -20,11 +22,16 @@ public class HomeCatgoryAdapter extends RecyclerView.Adapter<HomeCatgoryAdapter.
     private List<HomeCampaign> mDatas;
     private Context mContext;
 
+    private OnCampaignClickListener mListener;
+
     public HomeCatgoryAdapter(List<HomeCampaign> datas, Context context){
         mDatas = datas;
         this.mContext = context;
     }
 
+    public  void SetOnCampaignClickListener(OnCampaignClickListener listener){
+        this.mListener=listener;
+    }
         @Override
         public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int type) {
 
@@ -56,7 +63,7 @@ public class HomeCatgoryAdapter extends RecyclerView.Adapter<HomeCatgoryAdapter.
             else return VIEW_TYPE_L;
         }
 
-        static  class ViewHolder extends RecyclerView.ViewHolder{
+       class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
             TextView textTitle;
             ImageView imageViewBig;
             ImageView imageViewSmallTop;
@@ -67,6 +74,38 @@ public class HomeCatgoryAdapter extends RecyclerView.Adapter<HomeCatgoryAdapter.
                 imageViewBig = (ImageView) itemView.findViewById(R.id.imgview_big);
                 imageViewSmallTop = (ImageView) itemView.findViewById(R.id.imgview_small_top);
                 imageViewSmallBottom = (ImageView) itemView.findViewById(R.id.imgview_small_bottom);
+
+                imageViewBig.setOnClickListener(this);//绑定监听事件
+                imageViewSmallTop.setOnClickListener(this);
+                imageViewSmallBottom.setOnClickListener(this);
             }
+
+            @Override
+            public void onClick(View v) {
+
+                HomeCampaign homeCampaign=mDatas.get(getLayoutPosition());
+                if(mListener!=null){
+                    switch(v.getId()){
+                        case R.id.imgview_big:
+                            mListener.onClick(v,homeCampaign.getCpOne());
+                            break;
+
+                        case R.id.imgview_small_top:
+                            mListener.onClick(v,homeCampaign.getCpTwo());
+                            break;
+
+                        case R.id.imgview_small_bottom:
+                            mListener.onClick(v,homeCampaign.getCpThree());
+                            break;
+
+
+                    }
+                }
+
+            }
+        }
+
+        public interface OnCampaignClickListener{//事件监听器
+           void onClick(View view, Campaign campaign);
         }
 }

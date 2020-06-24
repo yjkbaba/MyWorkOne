@@ -5,14 +5,15 @@
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="4.0dip">
+    android:paddingTop="4.0dip"
+    app:ignore="NamespaceTypo">
 
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview_category"
         android:layout_width="120dp"
         android:layout_height="fill_parent"
-        android:background="@color/white"
+        android:background="@color/menu"
         >
 
 
@@ -40,7 +41,7 @@
 
 
 
-
+        <!--下拉刷新上拉加载控件-->
         <com.cjj.MaterialRefreshLayout
             android:id="@+id/refresh_layout"
             android:layout_width="match_parent"
