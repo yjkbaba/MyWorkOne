@@ -90,12 +90,37 @@ public class OkHttpHelper {
 
                 @Override
                 public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+//                    callback.onResponse(response);
+                    callbackResponse(callback,response);
 
+                    if(response.isSuccessful()) {
+
+                        String resultStr = response.body().string();
+
+                        Log.d(TAG, "result=" + resultStr);
+
+                        if (callback.mType == String.class){
+                            callbackSuccess(callback,response,resultStr);
+                        }
+                        else {
+                            try {
+
+                                Object obj = mGson.fromJson(resultStr, callback.mType);
+                                callbackSuccess(callback,response,obj);
+                            }
+                            catch (com.google.gson.JsonParseException e){ // Json解析的错误
+                                callback.onError(response,response.code(),e);
+                            }
+                        }
+                    }
+                    else {
+                        callbackError(callback,response,null);
+                    }
                 }
 
                 @Override
                 public void onFailure(@NotNull Call call, @NotNull IOException e) {
-
+                    callbackFailure(callback, request, e);
                 }
 
                 //@Override
