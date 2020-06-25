@@ -6,4 +6,11 @@
     <color name="white">#31009688</color>//底部菜单栏背景框
     <color name="black">#000</color>
     <color name="bg_color">#f1f1f1</color>
+    <color name="menu">#089C27B0</color>
+
+    <!-- 暗灰色 -->
+    <color name="darkgrey">#a9a9a9</color>
+    <!-- 淡灰色 -->
+    <color name="gainsboro">#dcdcdc</color>
+
 </resources>

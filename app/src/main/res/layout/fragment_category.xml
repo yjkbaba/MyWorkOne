@@ -39,8 +39,6 @@
             />
 
 
-
-
         <!--下拉刷新上拉加载控件-->
         <com.cjj.MaterialRefreshLayout
             android:id="@+id/refresh_layout"

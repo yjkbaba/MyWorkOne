@@ -22,17 +22,11 @@ public class HomeCampaign implements Serializable {
     private Campaign cpThree;
 
 
-    public Campaign getCpOne() {
-        return cpOne;
-    }
+    public Campaign getCpOne() { return cpOne; }
 
-    public void setCpOne(Campaign cpOne) {
-        this.cpOne = cpOne;
-    }
+    public void setCpOne(Campaign cpOne) { this.cpOne = cpOne; }
 
-    public Campaign getCpTwo() {
-        return cpTwo;
-    }
+    public Campaign getCpTwo() {return cpTwo; }
 
     public void setCpTwo(Campaign cpTwo) {
         this.cpTwo = cpTwo;
