@@ -98,7 +98,7 @@ public class CategoryFragment extends Fragment {
 
                 if(currPage <=totalPage){
                     loadMoreData();//上拉加载
-                    Toast.makeText(getContext(),"已刷新",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(),"已加载",Toast.LENGTH_SHORT).show();
                    }
 
                 else{
