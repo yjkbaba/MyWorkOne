@@ -21,6 +21,6 @@ public class Contants {
         public static final String WARES_LIST=BASE_URL +"wares/list";*/
 
         public static final String CATEGORY_LIST=BASE_URL +"category/list";//分类，一级菜单
-
+        public static final String BANNER=BASE_URL +"banner/query";//分类，轮播广告
     }
 }

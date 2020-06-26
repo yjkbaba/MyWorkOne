@@ -27,11 +27,11 @@
         android:layout_marginLeft="2dp"
         >
 
-
+        <!--广告-->
         <com.daimajia.slider.library.SliderLayout
             android:id="@+id/slider"
             android:layout_width="match_parent"
-            android:layout_height="180dp"
+            android:layout_height="120dp"
             custom:pager_animation="Accordion"
             custom:auto_cycle="true"
             custom:indicator_visibility="visible"
