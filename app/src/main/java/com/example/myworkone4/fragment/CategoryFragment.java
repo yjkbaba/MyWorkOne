@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DefaultItemAnimator;
@@ -15,6 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.cjj.MaterialRefreshLayout;
+import com.cjj.MaterialRefreshListener;
 import com.daimajia.slider.library.Animations.DescriptionAnimation;
 import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
@@ -53,7 +55,7 @@ public class CategoryFragment extends Fragment {
     private WaresAdapter mWaresAdatper;//定义二级菜单的适配器
 
     @ViewInject(R.id.slider)
-    private SliderLayout mSliderLayout;
+    private SliderLayout mSliderLayout;//下拉刷新
 
     @ViewInject(R.id.refresh_layout)
     private MaterialRefreshLayout mRefreshLaout;//下拉刷新
@@ -77,8 +79,46 @@ public class CategoryFragment extends Fragment {
 
         requestCategoryData();//调用一级菜单的方法
         requestBannerData();//调用轮播广告的方法
+        initRefreshLayout();//调用下拉刷新，上拉加载方法
 
         return  view;
+    }
+
+    private  void initRefreshLayout(){
+        mRefreshLaout.setLoadMore(true);
+        mRefreshLaout.setMaterialRefreshListener(new MaterialRefreshListener() {
+            @Override
+            public void onRefresh(MaterialRefreshLayout materialRefreshLayout) {
+                refreshData();//下拉刷新
+                Toast.makeText(getContext(),"已刷新",Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onRefreshLoadMore(MaterialRefreshLayout materialRefreshLayout) {
+
+                if(currPage <=totalPage){
+                    loadMoreData();//上拉加载
+                    Toast.makeText(getContext(),"已刷新",Toast.LENGTH_SHORT).show();
+                   }
+
+                else{
+                    mRefreshLaout.finishRefreshLoadMore();
+                    Toast.makeText(getContext(),"没有数据啦",Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+    }
+
+    private  void refreshData(){
+        currPage =1;
+        state=STATE_REFREH;
+        requestWares(category_id);
+    }
+
+    private void loadMoreData(){
+        currPage = ++currPage;
+        state = STATE_MORE;
+        requestWares(category_id);
     }
 
     private  void requestCategoryData() {//请求一级菜单数据
@@ -102,7 +142,10 @@ public class CategoryFragment extends Fragment {
             @Override
             public void onItemClick(View view, int position) {
                 Category category=mCategoryAdapter.getItem(position);
-                requestWares(category.getId());//调用获取二级菜单商品
+                category_id=category.getId();
+                currPage=1;
+                state=STATE_NORMAL;
+                requestWares(category_id);//调用获取二级菜单商品
             }
         });
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -157,7 +200,7 @@ public class CategoryFragment extends Fragment {
             @Override
             public void onSuccess(Response response, Page<Wares> waresPage) {
                 currPage = waresPage.getCurrentPage();
-                totalPage =waresPage.getTotalPage();
+                totalPage =waresPage.getTotalCount();//这里可能是getTotalPage???
                 showWaresData(waresPage.getList());//调用显示二级菜单商品
             }
 
