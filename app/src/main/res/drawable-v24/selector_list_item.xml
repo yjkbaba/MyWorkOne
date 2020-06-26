@@ -4,9 +4,9 @@
 
 
     <item  android:state_focused="true" android:drawable="@color/gainsboro" />
-    <item  android:state_pressed="true" android:drawable="@color/gainsboro" />
+    <item  android:state_pressed="true" android:drawable="@color/lightgray" />
 
-    <item android:drawable="@color/white"/>
+    <item android:drawable="@color/snow"/>
 
 </selector>
 

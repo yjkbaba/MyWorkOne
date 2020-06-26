@@ -11,14 +11,15 @@
     <!-- 暗灰色 -->
     <color name="darkgrey">#a9a9a9</color>
     <!-- 淡灰色 -->
-    <color name="gainsboro">#dcdcdc</color>
+    <color name="gainsboro">#56DCDCDC</color>
     <!-- 亮灰色 -->
     <color name="lightgray">#d3d3d3</color>
     <!-- 灰色 -->
     <color name="gray">#808080</color>
     <!-- 暗深红色 -->
     <color name="crimson">#dc143c</color>
-
+    <!-- 雪白色 -->
+    <color name="snow">#fffafa</color>
 
 
 
