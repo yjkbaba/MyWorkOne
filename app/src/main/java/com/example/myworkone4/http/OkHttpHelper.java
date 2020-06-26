@@ -165,17 +165,15 @@ public class OkHttpHelper {
 
         }
 
+    private void callbackSuccess(final  BaseCallback callback , final Response response, final Object obj ){
 
-        private void callbackSuccess(final  BaseCallback callback , final Response response, final Object obj ){
-
-            mHandler.post(new Runnable() {
-                @Override
-                public void run() {
-                    callback.onSuccess(response, obj);
-                }
-            });
-        }
-
+        mHandler.post(new Runnable() {
+            @Override
+            public void run() {
+                callback.onSuccess(response, obj);
+            }
+        });
+    }
 
         private void callbackError(final  BaseCallback callback , final Response response, final Exception e ){
 

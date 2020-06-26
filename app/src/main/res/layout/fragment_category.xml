@@ -52,7 +52,7 @@
             app:progress_show_circle_backgroud="false"
             >
 
-
+            <!--二级菜单-->
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerview_wares"
                 android:layout_width="match_parent"

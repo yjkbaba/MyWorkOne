@@ -1,4 +1,4 @@
-package com.example.myworkone4.adapter;
+package com.example.myworkone4.adapter.decoration;
 
 import android.graphics.Canvas;
 import android.graphics.Rect;

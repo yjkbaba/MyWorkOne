@@ -1,13 +1,24 @@
 package com.example.myworkone4.bean;
 
+import java.io.Serializable;
 
-public class Banner extends BaseBean {
+public class Wares implements Serializable {
 
 
-    private  String name;
-    private  String imgUrl;
-    private  String description;
+    private Long id;
+    private String name;
+    private String imgUrl;
+    private String description;
+    private Float price;
 
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
@@ -31,5 +42,13 @@ public class Banner extends BaseBean {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Float getPrice() {
+        return price;
+    }
+
+    public void setPrice(Float price) {
+        this.price = price;
     }
 }

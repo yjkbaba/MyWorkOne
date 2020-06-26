@@ -11,11 +11,6 @@ import androidx.fragment.app.Fragment;
 
 import com.example.myworkone4.R;
 
-
-
-/**
- * Created by Ivan on 15/9/22.
- */
 public class CartFragment extends Fragment {
 
     @Nullable

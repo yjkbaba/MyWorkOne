@@ -1,29 +1,6 @@
 package com.example.myworkone4.weiget;
 
 
-
-/*
- * Created by monkey
- * on 2014/9/24
- * 功能描述：修改过的FragmentTabHost,保存fragment实例不销毁
- */
-/*
- * Copyright (C) 2012 The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.os.Bundle;
@@ -43,26 +20,6 @@ import androidx.fragment.app.FragmentTransaction;
 
 import java.util.ArrayList;
 
-/**
- * Special TabHost that allows the use of {@link Fragment} objects for its tab
- * content. When placing this in a view hierarchy, after inflating the hierarchy
- * you must call {@link #setup(Context, FragmentManager, int)} to complete the
- * initialization of the tab host.
- *
- * <p>
- * Here is a simple example of using a FragmentTabHost in an Activity:
- *
- * {@sample
- * development/samples/Support4Demos/src/com/example/android/supportv4/app/
- * FragmentTabs.java complete}
- *
- * <p>
- * This can also be used inside of a com.example.myworkone3.fragment through com.example.myworkone3.fragment nesting:
- *
- * {@sample
- * development/samples/Support4Demos/src/com/example/android/supportv4/app/
- * FragmentTabsFragmentSupport.java complete}
- */
 public class FragmentTabHost extends TabHost implements
         TabHost.OnTabChangeListener {
     private final ArrayList<TabInfo> mTabs = new ArrayList<TabInfo>();

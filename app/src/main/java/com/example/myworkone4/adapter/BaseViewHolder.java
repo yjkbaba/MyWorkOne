@@ -9,10 +9,7 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-/**
- * Created by <a href="http://www.cniao5.com">菜鸟窝</a>
- * 一个专业的Android开发在线教育平台
- */
+
 public class BaseViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
 

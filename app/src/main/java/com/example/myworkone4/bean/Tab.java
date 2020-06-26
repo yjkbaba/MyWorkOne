@@ -1,8 +1,5 @@
 package com.example.myworkone4.bean;
 
-/**
- * Created by Ivan on 15/9/25.
- */
 public class Tab {
 
     private  int title;

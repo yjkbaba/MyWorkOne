@@ -1,19 +1,15 @@
 package com.example.myworkone4.fragment;
-import android.content.Entity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
-import android.widget.Toolbar;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.OrientationHelper;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import com.daimajia.slider.library.Animations.DescriptionAnimation;
 import com.daimajia.slider.library.SliderLayout;
@@ -22,12 +18,11 @@ import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.daimajia.slider.library.Tricks.ViewPagerEx;
 import com.example.myworkone4.Contants;
 import com.example.myworkone4.R;
-import com.example.myworkone4.adapter.DividerItemDecortion;
+import com.example.myworkone4.adapter.decoration.DividerItemDecortion;
 import com.example.myworkone4.bean.Banner;
 import com.example.myworkone4.bean.Campaign;
 import com.example.myworkone4.bean.HomeCampaign;
 
-import java.util.ArrayList;
 import java.util.List;
 import com.example.myworkone4.adapter.HomeCatgoryAdapter;
 
@@ -38,10 +33,6 @@ import com.google.gson.Gson;
 import okhttp3.Request;
 import okhttp3.Response;
 
-
-/**
- * Created by Ivan on 15/9/25.
- */
 public class HomeFragment extends Fragment {
 
 
@@ -112,7 +103,7 @@ public class HomeFragment extends Fragment {
         });
 
         mRecyclerView.addItemDecoration(new DividerItemDecortion());
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this.getActivity()));//布局管理器
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this.getActivity()));//布局管理器,线性
         mRecyclerView.setAdapter(mAdatper);//适配器
 
 

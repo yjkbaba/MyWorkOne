@@ -1,8 +1,5 @@
 package com.example.myworkone4.bean;
 
-/**
- * Created by Ivan on 15/9/24.
- */
 public class Category extends BaseBean {
 
     public Category() { }
