@@ -128,7 +128,7 @@ public class CategoryFragment extends Fragment {
                 showCategoryData(categories);
                 if(categories !=null && categories.size()>0)
                     category_id = categories.get(0).getId();
-                    requestWares(category_id);//调用获取二级菜单方法，默认显示第一个二级菜单
+                requestWares(category_id);//调用获取二级菜单方法，默认显示第一个二级菜单
             }
             @Override
             public void onError(Response response, int code, Exception e) {

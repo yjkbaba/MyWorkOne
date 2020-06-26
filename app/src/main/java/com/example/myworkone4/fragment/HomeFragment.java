@@ -18,7 +18,7 @@ import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.daimajia.slider.library.Tricks.ViewPagerEx;
 import com.example.myworkone4.Contants;
 import com.example.myworkone4.R;
-import com.example.myworkone4.adapter.decoration.DividerItemDecortion;
+import com.example.myworkone4.adapter.decoration.CardViewtemDecortion;
 import com.example.myworkone4.bean.Banner;
 import com.example.myworkone4.bean.Campaign;
 import com.example.myworkone4.bean.HomeCampaign;
@@ -102,9 +102,11 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        mRecyclerView.addItemDecoration(new DividerItemDecortion());
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this.getActivity()));//布局管理器,线性
-        mRecyclerView.setAdapter(mAdatper);//适配器
+        mRecyclerView.setAdapter(mAdatper);
+
+        mRecyclerView.addItemDecoration(new CardViewtemDecortion());
+
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this.getActivity()));
 
 
     }
