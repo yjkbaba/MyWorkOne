@@ -90,7 +90,6 @@ public class OkHttpHelper {
 
                 @Override
                 public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
-//                    callback.onResponse(response);
                     callbackResponse(callback,response);
 
                     if(response.isSuccessful()) {
@@ -123,7 +122,7 @@ public class OkHttpHelper {
                     callbackFailure(callback, request, e);
                 }
 
-                //@Override
+                /*//@Override
                 public void onFailure(Request request, IOException e) {
                     callbackFailure(callback, request, e);
 
@@ -159,7 +158,7 @@ public class OkHttpHelper {
                         callbackError(callback,response,null);
                     }
 
-                }
+                }*/
             });
 
 
