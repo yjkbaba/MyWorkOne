@@ -1,4 +1,7 @@
 package com.example.myworkone4.adapter;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -74,7 +77,6 @@ public class HomeCatgoryAdapter extends RecyclerView.Adapter<HomeCatgoryAdapter.
                 imageViewBig = (ImageView) itemView.findViewById(R.id.imgview_big);
                 imageViewSmallTop = (ImageView) itemView.findViewById(R.id.imgview_small_top);
                 imageViewSmallBottom = (ImageView) itemView.findViewById(R.id.imgview_small_bottom);
-
                 imageViewBig.setOnClickListener(this);//绑定监听事件
                 imageViewSmallTop.setOnClickListener(this);
                 imageViewSmallBottom.setOnClickListener(this);
@@ -83,7 +85,7 @@ public class HomeCatgoryAdapter extends RecyclerView.Adapter<HomeCatgoryAdapter.
             @Override
             public void onClick(View v) {
 
-                HomeCampaign homeCampaign=mDatas.get(getLayoutPosition());
+                /*HomeCampaign homeCampaign=mDatas.get(getLayoutPosition());
                 if(mListener!=null){
                     switch(v.getId()){
                         case R.id.imgview_big:
@@ -100,9 +102,45 @@ public class HomeCatgoryAdapter extends RecyclerView.Adapter<HomeCatgoryAdapter.
 
 
                     }
+                }*/
+                if(mListener !=null){
+
+                    anim(v);
+
                 }
 
             }
+           private  void anim(final View v){
+
+               ObjectAnimator animator =  ObjectAnimator.ofFloat(v, "rotationX", 0.0F, 360.0F)
+                       .setDuration(200);
+               animator.addListener(new AnimatorListenerAdapter() {
+                   @Override
+                   public void onAnimationEnd(Animator animation) {
+
+                       HomeCampaign campaign = mDatas.get(getLayoutPosition());
+
+                       switch (v.getId()){
+
+                           case  R.id.imgview_big:
+                               mListener.onClick(v, campaign.getCpOne());
+                               break;
+
+                           case  R.id.imgview_small_top:
+                               mListener.onClick(v, campaign.getCpTwo());
+                               break;
+
+                           case R.id.imgview_small_bottom:
+                               mListener.onClick(v,campaign.getCpThree());
+                               break;
+
+                       }
+
+                   }
+               });
+               animator.start();
+           }
+
         }
 
         public interface OnCampaignClickListener{//事件监听器

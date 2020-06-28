@@ -5,7 +5,7 @@ package com.example.myworkone4;
  */
 public class Contants {
 
-
+    public static final String  COMPAINGAIN_ID="compaigin_id";
     public static class API{
 
 
@@ -21,6 +21,7 @@ public class Contants {
         public static final String WARES_LIST=BASE_URL +"wares/list";
 
         public static final String CATEGORY_LIST=BASE_URL +"category/list";//分类，一级菜单
+        public static final String WARES_CAMPAIN_LIST=BASE_URL +"wares/campaign/list";
 
     }
 }
