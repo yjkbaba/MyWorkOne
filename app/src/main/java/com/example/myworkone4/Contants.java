@@ -6,6 +6,14 @@ package com.example.myworkone4;
 public class Contants {
 
     public static final String  COMPAINGAIN_ID="compaigin_id";
+    public static final String  WARE="ware";
+
+    public static final String USER_JSON="user_json";
+    public static final String TOKEN="token";
+
+    public  static final String DES_KEY="Cniao5_123456";
+
+    public  static final int REQUEST_CODE=0;
     public static class API{
 
 
@@ -23,5 +31,8 @@ public class Contants {
         public static final String CATEGORY_LIST=BASE_URL +"category/list";//分类，一级菜单
         public static final String WARES_CAMPAIN_LIST=BASE_URL +"wares/campaign/list";
 
-    }
+        public static final String LOGIN=BASE_URL +"auth/login";//用户登录
+        public static final String REG=BASE_URL +"auth/reg";
+
+          }
 }

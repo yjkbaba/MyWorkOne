@@ -25,10 +25,6 @@ import okhttp3.Response;
 public class OkHttpHelper {
 
 
-//倪雪彬是臭猪猪
-
-
-
         public static final String TAG="OkHttpHelper";
 
         private  static  OkHttpHelper mInstance;

@@ -3,7 +3,7 @@
     <color name="colorPrimary">#F44336</color>//顶部搜索栏背景
     <color name="colorPrimaryDark">#C8FF5722</color>
     <color name="colorAccent">#03DAC5</color>
-    <color name="white">#31009688</color>//底部菜单栏背景框
+    <color name="tabhost">#31009688</color>//底部菜单栏背景框
     <color name="black">#000</color>
     <color name="bg_color">#f1f1f1</color>
     <color name="menu">#089C27B0</color>
@@ -36,7 +36,8 @@
     <color name="red_btn_color_disable">#7fff5454</color>
 
 
-
+    <color name="white">#ffffff</color>
+    <!-- 白色 -->
     <color name="ivory">#fffff0</color>
     <!-- 象牙色 -->
     <color name="lightyellow">#ffffe0</color>
