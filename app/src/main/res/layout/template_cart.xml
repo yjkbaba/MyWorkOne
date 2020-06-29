@@ -61,7 +61,7 @@
                 android:layout_gravity="right"
                 />
 
-           <androidx.recyclerview.widget.NumberAddSubView
+           <com.example.myworkone4.weiget.NumberAddSubView
                android:id="@+id/num_control"
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"

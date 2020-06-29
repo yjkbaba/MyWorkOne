@@ -1,47 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:orientation="vertical">
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".MainActivity"
+android:orientation="vertical">
 
 
-    <com.example.myworkone4.weiget.CnToolbar
-        android:id="@+id/toolbar"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
-        android:minHeight="?attr/actionBarSize"
-        app:isShowSearchView="true"
-        >
-    </com.example.myworkone4.weiget.CnToolbar>
+<com.example.myworkone4.weiget.CnToolbar
+    android:id="@+id/toolbar"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="?attr/colorPrimary"
+    android:minHeight="?attr/actionBarSize"
+    app:isShowSearchView="true"
+    >
+</com.example.myworkone4.weiget.CnToolbar>
+
+<FrameLayout
+    android:id="@+id/realtabcontent"
+    android:layout_width="fill_parent"
+    android:layout_height="0dp"
+    android:layout_weight="1"
+
+    tools:ignore="MissingConstraints" />
+
+<com.example.myworkone4.weiget.FragmentTabHost
+    android:id="@android:id/tabhost"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    tools:ignore="MissingConstraints"
+    >
 
     <FrameLayout
-        android:id="@+id/realtabcontent"
-        android:layout_width="fill_parent"
+        android:id="@android:id/tabcontent"
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_weight="1"
-
+        android:layout_weight="0"
         tools:ignore="MissingConstraints" />
 
-    <com.example.myworkone4.weiget.FragmentTabHost
-        android:id="@android:id/tabhost"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
-        tools:ignore="MissingConstraints"
-        >
-
-        <FrameLayout
-            android:id="@android:id/tabcontent"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_weight="0"
-            tools:ignore="MissingConstraints" />
-
-    </com.example.myworkone4.weiget.FragmentTabHost>
+</com.example.myworkone4.weiget.FragmentTabHost>
 
 </LinearLayout>
