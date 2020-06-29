@@ -32,7 +32,7 @@ public class Contants {
         public static final String WARES_CAMPAIN_LIST=BASE_URL +"wares/campaign/list";
 
         public static final String LOGIN=BASE_URL +"auth/login";//用户登录
-        public static final String REG=BASE_URL +"auth/reg";
+        public static final String REG=BASE_URL +"auth/reg";//用户注册
 
           }
 }

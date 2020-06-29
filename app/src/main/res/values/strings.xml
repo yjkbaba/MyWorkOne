@@ -18,4 +18,6 @@
     <string name="title_activity_new_order">NewOrderActivity</string>
     <string name="title_activity_reg">RegActivity</string>
 
+    <string name="login">秋水伊人</string>
+
 </resources>

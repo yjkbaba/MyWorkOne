@@ -32,6 +32,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
+            android:textSize="20dp"
             android:checked="true"
             android:text="全选"
             style="@style/customCheckbox"/>
@@ -42,9 +43,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@+id/checkbox_all"
-            android:layout_marginLeft="40dp"
+            android:layout_marginLeft="30dp"
             android:layout_centerVertical="true"
-            android:textSize="30dp"
+            android:textSize="25dp"
             android:text="合计"/>
 
         <Button
@@ -53,8 +54,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:minHeight="60dp"
-            android:minWidth="120dp"
+            android:minHeight="50dp"
+            android:minWidth="90dp"
             android:text="去结算"
             style="@style/bigRedButton"/>
 
@@ -66,8 +67,8 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:visibility="gone"
-            android:minHeight="60dp"
-            android:minWidth="120dp"
+            android:minHeight="50dp"
+            android:minWidth="90dp"
             android:text="删除"
             style="@style/bigRedButton"/>
 

@@ -78,6 +78,9 @@ public class MineFragment extends BaseFragment{
         message.setBounds(0,0,180,180);
         mymessage.setCompoundDrawables(message,null,null,null);
 
+        mTxtUserName.setText(R.string.to_login);
+        mbtnLogout.setVisibility(View.GONE);
+
     }
 
     @OnClick(value = {R.id.img_head,R.id.txt_username})//点击，登录
@@ -86,6 +89,7 @@ public class MineFragment extends BaseFragment{
         if(CniaoApplication.getInstance().getUser() == null) {
             Intent intent = new Intent(getContext(), LoginActivity.class);//跳转到登录界面进行登录
             startActivityForResult(intent, Contants.REQUEST_CODE);//请求码，登录成功后可以跳转回来
+
         }
 
     }
@@ -94,7 +98,8 @@ public class MineFragment extends BaseFragment{
     public void logout(View view){
 
         CniaoApplication.getInstance().clearUser();
-        showUser(null);
+        mTxtUserName.setText(R.string.to_login);
+        mbtnLogout.setVisibility(View.GONE);
     }
 
     @Override
@@ -109,11 +114,12 @@ public class MineFragment extends BaseFragment{
                 showHeadImage(user.getLogo_url());
 
             mTxtUserName.setText(user.getUsername());
+
             mbtnLogout.setVisibility(View.VISIBLE);
         }
         else {
-            mTxtUserName.setText(R.string.to_login);
-            mbtnLogout.setVisibility(View.GONE);
+            mTxtUserName.setText(R.string.login);
+            mbtnLogout.setVisibility(View.VISIBLE);
         }
     }
 

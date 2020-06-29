@@ -1,19 +1,16 @@
 package com.example.myworkone4;
 
-import android.content.Intent;
-import android.graphics.drawable.Drawable;
-import android.os.Bundle;
+import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
-
 import com.example.myworkone4.bean.User;
+import com.example.myworkone4.fragment.MineFragment;
 import com.example.myworkone4.http.OkHttpHelper;
 import com.example.myworkone4.http.SpotsCallBack;
 import com.example.myworkone4.msg.LoginRespMsg;
@@ -24,49 +21,32 @@ import com.example.myworkone4.weiget.CnToolbar;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;
+import com.squareup.okhttp.Response;
 
 import java.util.HashMap;
 import java.util.Map;
 
+import dmax.dialog.SpotsDialog;
 
-public class LoginActivity extends AppCompatActivity{
+public class RegActivity extends AppCompatActivity {
 
     @ViewInject(R.id.toolbar)
     private CnToolbar mToolBar;
 
-   @ViewInject(R.id.text_phone)
-   private ClearEditText mTextPhone;
+    @ViewInject(R.id.edittext_phone)
+    private ClearEditText mTextPhone;
 
-   @ViewInject(R.id.text_pwd)
+    @ViewInject(R.id.edittext_pwd)
     private ClearEditText mTextPwd;
-
-
-
 
     private OkHttpHelper okHttpHelper = OkHttpHelper.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
-
-        EditText mTextPhone1=(EditText)findViewById(R.id.text_phone);
-        EditText mTextPwd1=(EditText)findViewById(R.id.text_pwd);
-
-        Drawable phone=ContextCompat.getDrawable(this,R.drawable.icon_telphone_32);//调整 我的电话 图片大小
-        phone.setBounds(0,0,180,180);
-        mTextPhone1.setCompoundDrawables(phone,null,null,null);
-
-        Drawable password=ContextCompat.getDrawable(this,R.drawable.icon_lock);//调整 我的密码 图片大小
-        password.setBounds(0,0,180,180);
-        mTextPwd1.setCompoundDrawables(password,null,null,null);
-
-
+        setContentView(R.layout.activity_reg);
         ViewUtils.inject(this);
         initToolBar();
-
-
 
     }
 
@@ -76,7 +56,7 @@ public class LoginActivity extends AppCompatActivity{
             @Override
             public void onClick(View v) {
 
-                LoginActivity.this.finish();
+               RegActivity.this.finish();
 
             }
         });
@@ -88,8 +68,9 @@ public class LoginActivity extends AppCompatActivity{
         finish();
     }
 
-    @OnClick(R.id.btn_login)//输入手机号码和密码进行登录
-    public void login(View view){
+
+    @OnClick(R.id.btn_reg)
+    private void doReg(View view){
 
         String phone = mTextPhone.getText().toString().trim();
         if(TextUtils.isEmpty(phone)){
@@ -106,7 +87,7 @@ public class LoginActivity extends AppCompatActivity{
         params.put("phone",phone);
         params.put("password", DESUtil.encode(Contants.DES_KEY,pwd));//加密
 
-        okHttpHelper.post(Contants.API.LOGIN, params, new SpotsCallBack<LoginRespMsg<User>>(this) {
+        okHttpHelper.post(Contants.API.REG, params, new SpotsCallBack<LoginRespMsg<User>>(this) {
 
             @Override
             public void onSuccess(okhttp3.Response response, LoginRespMsg<User> userLoginRespMsg) {//登录成功后把user信息和token验证码保存到本地
@@ -114,10 +95,10 @@ public class LoginActivity extends AppCompatActivity{
                 application.putUser(userLoginRespMsg.getData(), userLoginRespMsg.getToken());
                 if(application.getIntent() == null){
                     setResult(RESULT_OK);//返回码
-                    Toast.makeText(LoginActivity.this,"登录成功",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegActivity.this,"注册成功",Toast.LENGTH_SHORT).show();
                     finish();
                 }else{
-                    application.jumpToTargetActivity(LoginActivity.this);
+                    application.jumpToTargetActivity(RegActivity.this);
                     finish();
                 }
             }
@@ -127,13 +108,4 @@ public class LoginActivity extends AppCompatActivity{
             }
         });
     }
-
-    @OnClick(R.id.txt_toReg)
-    public void res(View view){//点击注册，跳转到注册界面
-
-        Intent intent = new Intent(this, RegActivity.class);
-        startActivity(intent);
-
-    }
-
 }
