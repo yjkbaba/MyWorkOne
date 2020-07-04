@@ -45,8 +45,6 @@ public class CnToolbar extends Toolbar {
     public CnToolbar(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
 
-
-
         initView();
         setContentInsetsRelative(10,10);
 
@@ -93,7 +91,7 @@ public class CnToolbar extends Toolbar {
             mInflater = LayoutInflater.from(getContext());
             mView = mInflater.inflate(R.layout.toolbar, null);
             mTextTitle = (TextView) mView.findViewById(R.id.toolbar_title);
-            mSearchView = (EditText) mView.findViewById(R.id.toolbar_searchview);
+            mSearchView = (EditText) mView.findViewById(R.id.toolbar_searchview);//搜索
             mRightButton = (Button) mView.findViewById(R.id.toolbar_rightButton);
 
 

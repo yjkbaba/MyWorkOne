@@ -13,6 +13,9 @@ public class User implements Serializable {
     private  String username;
     private  String mobi;
 
+    private String phone;            //电话号码
+    private String password;        //密码
+
     public Long getId() {
         return id;
     }
@@ -51,5 +54,37 @@ public class User implements Serializable {
 
     public void setMobi(String mobi) {
         this.mobi = mobi;
+    }
+
+
+
+
+
+
+    public User(String phone, String password) {
+        this.phone = phone;
+        this.password = password;
+
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+    public String getPassword() {
+        return password;
+    }
+    public void setPassword(String password) {
+        this.password = password;
+    }
+    @Override
+    public String toString() {
+        return "User{" +
+                "phone='" + phone + '\'' +
+                ", password='" + password + '\'' +
+
+                '}';
     }
 }

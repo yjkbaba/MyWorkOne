@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">MyWorkOne4</string>
-    <string name="home">主页</string>
+    <string name="home">首页</string>
     <string name="catagory">分类</string>
     <string name="cart">购物车</string>
     <string name="mine">我的</string>
@@ -19,5 +19,6 @@
     <string name="title_activity_reg">RegActivity</string>
 
     <string name="login">秋水伊人</string>
+    <string name="login1">小仙女和她的猪猪</string>
 
 </resources>

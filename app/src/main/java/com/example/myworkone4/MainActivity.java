@@ -38,10 +38,10 @@ public class MainActivity extends AppCompatActivity {
     }
     private void initToolBar() {
         mToolbar = (CnToolbar) findViewById(R.id.toolbar);
-    }
+    }//顶部搜索
 
-    private void initTab() {
-        Tab tab_home = new Tab(HomeFragment.class,R.string.home,R.drawable.selector_icon_home);
+    private void initTab() {//底部导航
+        Tab tab_home = new Tab(HomeFragment.class,R.string.home,R.drawable.selector_icon_home);//对应的Fragment
         Tab tab_category = new Tab(CategoryFragment.class,R.string.catagory,R.drawable.selector_icon_category);
         Tab tab_cart = new Tab(CartFragment.class,R.string.cart,R.drawable.selector_icon_cart);
         Tab tab_mine = new Tab(MineFragment.class,R.string.mine,R.drawable.selector_icon_mine);

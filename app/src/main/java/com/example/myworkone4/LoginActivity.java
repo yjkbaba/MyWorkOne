@@ -5,7 +5,6 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -14,24 +13,22 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import com.example.myworkone4.bean.User;
-import com.example.myworkone4.http.OkHttpHelper;
-import com.example.myworkone4.http.SpotsCallBack;
-import com.example.myworkone4.msg.LoginRespMsg;
-import com.example.myworkone4.utils.DESUtil;
-import com.example.myworkone4.utils.ToastUtils;
+import com.example.myworkone4.fragment.MineFragment;
+import com.example.myworkone4.http.DBOpenHelper;
 import com.example.myworkone4.weiget.ClearEditText;
 import com.example.myworkone4.weiget.CnToolbar;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
 
 
 public class LoginActivity extends AppCompatActivity{
 
-    @ViewInject(R.id.toolbar)
+   private DBOpenHelper mDBOpenHelper;
+
+   @ViewInject(R.id.toolbar)
     private CnToolbar mToolBar;
 
    @ViewInject(R.id.text_phone)
@@ -41,14 +38,12 @@ public class LoginActivity extends AppCompatActivity{
     private ClearEditText mTextPwd;
 
 
-
-
-    private OkHttpHelper okHttpHelper = OkHttpHelper.getInstance();
+    //private OkHttpHelper okHttpHelper = OkHttpHelper.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        super.onCreate(savedInstanceState);
+        super.onCreate(savedInstanceState);//设置视图内容的配置文件
         setContentView(R.layout.activity_login);
 
         EditText mTextPhone1=(EditText)findViewById(R.id.text_phone);
@@ -64,13 +59,15 @@ public class LoginActivity extends AppCompatActivity{
 
 
         ViewUtils.inject(this);
-        initToolBar();
+       // initToolBar();
+
+        mDBOpenHelper = new DBOpenHelper(getApplicationContext());
 
 
 
     }
 
-    private void initToolBar(){
+   /* private void initToolBar(){
         mToolBar.setNavigationOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -134,6 +131,51 @@ public class LoginActivity extends AppCompatActivity{
         Intent intent = new Intent(this, RegActivity.class);
         startActivity(intent);
 
+    }*/
+
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
     }
+
+    @OnClick(R.id.txt_toReg)
+    public void reg(View view){//点击注册，跳转到注册界面
+
+        Intent intent = new Intent(this, RegActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+    @OnClick(R.id.btn_login)//输入手机号码和密码进行登录
+    public void login(View view){
+
+        String phone = mTextPhone.getText().toString().trim();
+        String password = mTextPwd.getText().toString().trim();
+        if (!TextUtils.isEmpty(phone) && !TextUtils.isEmpty(password)) {
+            ArrayList<User> data = mDBOpenHelper.getAllData();
+            boolean match = false;
+            for (int i = 0; i < data.size(); i++) {
+                User user = data.get(i);
+                if (phone.equals(user.getPhone()) && password.equals(user.getPassword())) {
+                    match = true;
+                    break;
+                } else {
+                    match = false;
+                }
+            }
+            if (match) {
+                Toast.makeText(this, "登录成功", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(this, MineFragment.class);
+                setResult(RESULT_OK);//返回码
+                finish();//销毁此Activity
+            } else {
+                Toast.makeText(this, "手机号码或密码不正确，请重新输入", Toast.LENGTH_SHORT).show();
+            }
+        } else {
+            Toast.makeText(this, "请输入你的手机号码或密码", Toast.LENGTH_SHORT).show();
+        }
+}
 
 }

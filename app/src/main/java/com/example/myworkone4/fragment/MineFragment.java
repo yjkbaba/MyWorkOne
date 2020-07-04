@@ -94,12 +94,13 @@ public class MineFragment extends BaseFragment{
 
     }
 
-    @OnClick(R.id.btn_logout)
+    @OnClick(R.id.btn_logout)//点击退出登录
     public void logout(View view){
 
         CniaoApplication.getInstance().clearUser();
         mTxtUserName.setText(R.string.to_login);
         mbtnLogout.setVisibility(View.GONE);
+        Picasso.with(getActivity()).load(R.drawable.default_head).into(mImageHead);
     }
 
     @Override
@@ -109,7 +110,7 @@ public class MineFragment extends BaseFragment{
     }
 
     private void showUser(User user){
-        if(user!=null){
+        /*if(user!=null){
             if(!TextUtils.isEmpty(user.getLogo_url()))
                 showHeadImage(user.getLogo_url());
 
@@ -120,10 +121,10 @@ public class MineFragment extends BaseFragment{
         else {
             mTxtUserName.setText(R.string.login);
             mbtnLogout.setVisibility(View.VISIBLE);
-        }
+        }*/
+        mTxtUserName.setText(R.string.login1);
+        mbtnLogout.setVisibility(View.VISIBLE);
+        Picasso.with(getActivity()).load(R.drawable.img_head1).into(mImageHead);
     }
 
-    private void showHeadImage(String url){
-        Picasso.with(getActivity()).load(url).into(mImageHead);
-    }
 }

@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.example.myworkone4.bean.User;
 import com.example.myworkone4.fragment.MineFragment;
+import com.example.myworkone4.http.DBOpenHelper;
 import com.example.myworkone4.http.OkHttpHelper;
 import com.example.myworkone4.http.SpotsCallBack;
 import com.example.myworkone4.msg.LoginRespMsg;
@@ -30,6 +31,8 @@ import dmax.dialog.SpotsDialog;
 
 public class RegActivity extends AppCompatActivity {
 
+    private DBOpenHelper mDBOpenHelper;
+
     @ViewInject(R.id.toolbar)
     private CnToolbar mToolBar;
 
@@ -39,18 +42,19 @@ public class RegActivity extends AppCompatActivity {
     @ViewInject(R.id.edittext_pwd)
     private ClearEditText mTextPwd;
 
-    private OkHttpHelper okHttpHelper = OkHttpHelper.getInstance();
+   // private OkHttpHelper okHttpHelper = OkHttpHelper.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reg);
         ViewUtils.inject(this);
-        initToolBar();
+       // initToolBar();
+        mDBOpenHelper = new DBOpenHelper(getApplicationContext());
 
     }
 
-    private void initToolBar(){
+   /* private void initToolBar(){
         mToolBar.setNavigationOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -107,5 +111,31 @@ public class RegActivity extends AppCompatActivity {
             public void onError(okhttp3.Response response, int code, Exception e) {
             }
         });
+    }*/
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }
+
+    @OnClick(R.id.btn_reg)
+    private void doReg(View view){
+        String phone = mTextPhone.getText().toString().trim();
+        String password = mTextPwd.getText().toString().trim();
+        //Toast.makeText(this,phone, Toast.LENGTH_SHORT).show();
+
+        //注册验证
+       if (!TextUtils.isEmpty(phone) && !TextUtils.isEmpty(password)  ) {
+
+            //将用户名和密码加入到数据库中
+            mDBOpenHelper.add(phone,password);
+            Intent intent2 = new Intent(this, MineFragment.class);
+           setResult(RESULT_OK);//返回码
+            finish();
+            Toast.makeText(this,  "验证通过，注册成功", Toast.LENGTH_SHORT).show();
+        }else {
+            Toast.makeText(this, "未完善信息，注册失败", Toast.LENGTH_SHORT).show();
+        }
     }
 }

@@ -212,7 +212,7 @@ public class CategoryFragment extends Fragment {
     private  void showWaresData(List<Wares> wares){//显示二级菜单商品
         switch (state){
 
-            case  STATE_NORMAL:
+            case  STATE_NORMAL://正常
                 if(mWaresAdatper ==null) {
                     mWaresAdatper = new WaresAdapter(getContext(),wares);
                     mRecyclerviewWares.setItemAnimator(new DefaultItemAnimator());
@@ -228,7 +228,7 @@ public class CategoryFragment extends Fragment {
 
                 break;
 
-            case STATE_REFREH:
+            case STATE_REFREH://刷新
                 mWaresAdatper.clear();
                 mWaresAdatper.addData(wares);
 
@@ -236,7 +236,7 @@ public class CategoryFragment extends Fragment {
                 mRefreshLaout.finishRefresh();
                 break;
 
-            case STATE_MORE:
+            case STATE_MORE://加载
                 mWaresAdatper.addData(mWaresAdatper.getDatas().size(),wares);
                 mRecyclerviewWares.scrollToPosition(mWaresAdatper.getDatas().size());
                 mRefreshLaout.finishRefreshLoadMore();

@@ -185,9 +185,9 @@ public class HomeFragment extends BaseFragment {
     @Override
     public void init() {
 
-        requestImages();
+        requestImages();//轮播广告
 
-        initRecyclerView();
+        initRecyclerView();//热门推荐
     }
 
 
@@ -284,9 +284,6 @@ public class HomeFragment extends BaseFragment {
 
     private void initSlider(){
 
-
-
-
         if(mBanner !=null){
 
             for (Banner banner : mBanner){
@@ -301,10 +298,7 @@ public class HomeFragment extends BaseFragment {
             }
         }
 
-
-
         mSliderLayout.setPresetIndicator(SliderLayout.PresetIndicators.Center_Bottom);
-
         mSliderLayout.setCustomAnimation(new DescriptionAnimation());
         mSliderLayout.setPresetTransformer(SliderLayout.Transformer.RotateUp);
         mSliderLayout.setDuration(3000);
