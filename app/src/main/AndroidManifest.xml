@@ -5,6 +5,14 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
+    <!-- 注：有些权限是需要动态注册的，如 READ_PHONE_STATE 权限 -->
+    <!-- 通用权限 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
+
     <application
         android:name=".CniaoApplication"
         android:allowBackup="true"
@@ -16,6 +24,7 @@
         <activity android:name=".RegActivity" />
         <activity android:name=".TestActivity" />
         <activity android:name=".LoginActivity" />
+        <activity android:name=".CreateOrderActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,6 +33,81 @@
             </intent-filter>
         </activity>
         <activity android:name=".WareListActivity" />
+
+        <!-- Ping++ SDK -->
+        <activity
+            android:name="com.pingplusplus.android.PaymentActivity"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:launchMode="singleTop"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+
+            <!-- 不使用QQ钱包,可删除此部分代码 -->
+            <!-- scheme 填写规则建议：qwallet + QQ 钱包中的 app_id -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:scheme="qwallet1991"/>
+            </intent-filter>
+
+        </activity>
+
+        <!-- 微信支付 -->
+        <!-- 1.需要将以下"替换成自己 APK 的包名"换成在微信平台上注册填写的包名 -->
+        <!-- 2.WxPayEntryActivity 这个类在 SDK 内部实现，开发者不需要额外实现该类 -->
+        <!--<activity-alias
+            android:name="替换成自己APK的包名.wxapi.WXPayEntryActivity"
+            android:exported="true"
+            android:targetActivity="com.pingplusplus.android.PaymentActivity" />-->
+
+        <!-- 招行一网通（非混淆加密方式） -->
+        <service android:name="cmb.pb.cmbsafe.CmbService" android:exported="false"/>
+        <activity
+            android:name="cmb.pb.ui.PBKeyboardActivity"
+            android:theme="@style/CmbDialogStyleBottom" />
+
+        <!-- 招行一网通 App 即招商银行（格式：`<SCHEME>://pingppcmbwallet`，其中 `<SCHEME>` 是你自定义的 `URL Schemes`） -->
+        <!--<intent-filter>
+            <action android:name="android.intent.action.VIEW"/>
+            <category android:name="android.intent.category.BROWSABLE"/>
+            <category android:name="android.intent.category.DEFAULT"/>
+            <data android:scheme="Scheme"/>
+            <data android:host="pingppcmbwallet"/>
+        </intent-filter>-->
+        <!-- 将以上代码添加到 Ping++ SDK 注册的 Activity，如： -->
+        <!--<activity
+            android:name="com.pingplusplus.android.PaymentActivity"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:launchMode="singleTask"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:scheme="自定义 URL Scheme"/>
+                <data android:host="pingppcmbwallet"/>
+            </intent-filter>
+
+        </activity>-->
+
+        <!-- 建行支付需注册 (自定义 action-name 保持与服务端的 third_app_info 一致） -->
+        <!--<activity android:name="com.ccb.ccbnetpay.activity.appresult.ResultActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="自定义 action-name"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+
+        <activity android:name="com.ccb.ccbnetpay.activity.CcbUnionPayActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name="com.ccb.ccbnetpay.activity.CcbH5PayActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait"/>-->
     </application>
 
 </manifest>

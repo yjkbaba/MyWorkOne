@@ -21,4 +21,7 @@
     <string name="login">秋水伊人</string>
     <string name="login1">小仙女和她的猪猪</string>
 
+    <string name="create_order">填写订单</string>
+    <string name="pay_result">支付结果</string>
+
 </resources>
