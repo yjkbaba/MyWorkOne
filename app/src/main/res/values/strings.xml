@@ -24,4 +24,6 @@
     <string name="create_order">填写订单</string>
     <string name="pay_result">支付结果</string>
 
+    <string name="add_addresses">新建收件地址</string>
+
 </resources>

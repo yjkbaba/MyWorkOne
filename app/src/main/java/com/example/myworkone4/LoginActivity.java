@@ -59,7 +59,7 @@ public class LoginActivity extends AppCompatActivity{
 
 
         ViewUtils.inject(this);
-       // initToolBar();
+        initToolBar();
 
         mDBOpenHelper = new DBOpenHelper(getApplicationContext());
 
@@ -67,7 +67,7 @@ public class LoginActivity extends AppCompatActivity{
 
     }
 
-   /* private void initToolBar(){
+    private void initToolBar(){
         mToolBar.setNavigationOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -79,7 +79,7 @@ public class LoginActivity extends AppCompatActivity{
         });
     }
 
-    @Override
+    /*@Override
     public void onBackPressed() {
         super.onBackPressed();
         finish();

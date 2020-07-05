@@ -25,6 +25,7 @@ import com.example.myworkone4.msg.BaseRespMsg;
 import com.example.myworkone4.msg.CreateOrderRespMsg;
 import com.example.myworkone4.utils.CartProvider;
 import com.example.myworkone4.utils.JSONUtil;
+import com.example.myworkone4.weiget.CnToolbar;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;
@@ -97,6 +98,9 @@ public class CreateOrderActivity extends BaseActivity  implements View.OnClickLi
     @ViewInject(R.id.txt_total)
     private TextView mTxtTotal;
 
+    @ViewInject(R.id.toolbar)
+    private CnToolbar mToolBar;
+
 
     private CartProvider cartProvider;
 
@@ -120,9 +124,21 @@ public class CreateOrderActivity extends BaseActivity  implements View.OnClickLi
         ViewUtils.inject(this);
 
         showData();
-
+        initToolBar();
         init();
 
+    }
+
+    private void initToolBar(){
+        mToolBar.setNavigationOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                CreateOrderActivity.this.finish();
+
+            }
+        });
     }
 
 

@@ -15,6 +15,7 @@ import android.widget.TextView;
 import androidx.core.content.ContextCompat;
 import androidx.core.widget.TextViewCompat;
 
+import com.example.myworkone4.AddressListActivity;
 import com.example.myworkone4.CniaoApplication;
 import com.example.myworkone4.Contants;
 import com.example.myworkone4.LoginActivity;
@@ -126,5 +127,13 @@ public class MineFragment extends BaseFragment{
         mbtnLogout.setVisibility(View.VISIBLE);
         Picasso.with(getActivity()).load(R.drawable.img_head1).into(mImageHead);
     }
+
+    @OnClick(R.id.txt_my_location)//点击收货地址
+    public void setLocation(View view){
+
+        Intent intent = new Intent(getContext(), AddressListActivity.class);//跳转到收货地址页面
+        startActivity(intent);
+    }
+
 
 }
